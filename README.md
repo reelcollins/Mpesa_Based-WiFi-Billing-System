@@ -86,4 +86,4 @@ For inquiries & support, reach out via:
 
 📧 Email: gideonpapa9@gmail.com
 
-📱 WhatsApp: +254756521055
+📱 WhatsApp: https://wa.me/254756521055
