@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WiFi Hotspot Status</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+        .container {
+            max-width: 400px;
+            margin: 50px auto;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .header img {
+            max-width: 150px;
+            margin-bottom: 10px;
+        }
+        h1 {
+            color: #4a4a4a;
+            font-size: 24px;
+            margin: 0;
+        }
+        .status-info {
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            background-color: #f0f7ff;
+        }
+        .status-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        .status-row:last-child {
+            border-bottom: none;
+        }
+        .label {
+            font-weight: bold;
+        }
+        .value {
+            text-align: right;
+        }
+        .btn {
+            background-color: #00a651;
+            color: white;
+            border: none;
+            padding: 12px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+            font-size: 16px;
+            font-weight: bold;
+            text-align: center;
+            display: inline-block;
+            text-decoration: none;
+            margin-bottom: 10px;
+        }
+        .btn-secondary {
+            background-color: #f0f0f0;
+            color: #333;
+        }
+        .btn:hover {
+            opacity: 0.9;
+        }
+        .footer {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 12px;
+            color: #777;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <img src="mpesa_logo.png" alt="M-Pesa Logo">
+            <h1>WiFi Hotspot Status</h1>
+        </div>
+        
+        <div class="status-info">
+            <div class="status-row">
+                <div class="label">Username:</div>
+                <div class="value">$(username)</div>
+            </div>
+            <div class="status-row">
+                <div class="label">IP Address:</div>
+                <div class="value">$(ip)</div>
+            </div>
+            <div class="status-row">
+                <div class="label">MAC Address:</div>
+                <div class="value">$(mac)</div>
+            </div>
+            <div class="status-row">
+                <div class="label">Connection Time:</div>
+                <div class="value">$(uptime)</div>
+            </div>
+            <div class="status-row">
+                <div class="label">Time Left:</div>
+                <div class="value">$(remain-bytes-in-nice) $(remain-timeout-in-nice)</div>
+            </div>
+            <div class="status-row">
+                <div class="label">Data Used:</div>
+                <div class="value">$(bytes-in-nice)</div>
+            </div>
+        </div>
+        
+        <a href="$(link-logout)" class="btn">Logout</a>
+        <a href="http://your-server-ip/pay" class="btn btn-secondary">Buy More Time</a>
+        
+        <div class="footer">
+            <p>© $(year) KibzNet WiFi Service</p>
+        </div>
+    </div>
+</body>
+</html> 

@@ -21,16 +21,18 @@ router.post("/admin/login", async (req, res) => {
         }
 
         // ✅ Check if admin exists
-        db.query("SELECT * FROM admins WHERE email = ?", [email], async (err, results) => {
+        db.query("SELECT * FROM admins WHERE email = $1", [email], async (err, results) => {
             if (err) {
                 console.error("Database Error:", err);
                 return res.status(500).json({ error: "Database error" });
             }
-            if (results.length === 0) {
+            
+            // PostgreSQL returns results differently from MySQL
+            if (!results.rows || results.rows.length === 0) {
                 return res.status(401).json({ error: "Invalid email or password" });
             }
 
-            const admin = results[0];
+            const admin = results.rows[0];
 
             // ✅ Debugging logs
             console.log("Stored Hashed Password:", admin.password);

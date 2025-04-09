@@ -1,8 +1,8 @@
 const bcrypt = require("bcryptjs");
 const db = require("../config/db");
 
-const email = "admin@example.com";  // Change this
-const password = "admin100"; // Change this
+const email = "kibeezy@gmail.com";  // Change this
+const password = "#collins12K"; // Change this
 
 async function createAdmin() {
     try {

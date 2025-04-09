@@ -26,14 +26,9 @@ router.post("/pay", async (req, res) => {
 
     // ✅ Save to database as "pending"
     db.query(
-        "INSERT INTO payments (phone, amount, transaction_id, mac_address, status) VALUES (?, ?, ?, ?, 'pending')",
-        [phone, amount, transactionId, mac_address],
-        async (err) => {
-            if (err) {
-                console.error("❌ Database error:", err);
-                return res.status(500).json({ error: "Database error", details: err.message });
-            }
-
+        "INSERT INTO payments (phone, amount, transaction_id, mac_address, status) VALUES ($1, $2, $3, $4, 'pending')",
+        [phone, amount, transactionId, mac_address])
+        .then(async () => {
             console.log("📤 Sending STK Push...");
             try {
                 const response = await stkPush(phone, amount, transactionId);
@@ -49,8 +44,11 @@ router.post("/pay", async (req, res) => {
                 console.error("❌ MPesa STK Push Error:", error.response ? error.response.data : error.message);
                 return res.status(500).json({ error: "STK Push request failed", details: error.message });
             }
-        }
-    );
+        })
+        .catch(err => {
+            console.error("❌ Database error:", err);
+            return res.status(500).json({ error: "Database error", details: err.message });
+        });
 });
 
 module.exports = router;

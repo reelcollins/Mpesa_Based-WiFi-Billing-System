@@ -94,7 +94,7 @@ const PaymentForm = () => {
               { value: "30", label: "24Hrs - Ksh 30" },
               { value: "20", label: "12Hrs - Ksh 20" },
               { value: "15", label: "4Hrs - Ksh 15" },
-              { value: "10", label: "1Hr - Ksh 10" }
+              { value: "1", label: "1Hr - Ksh 1" }
             ]}
           />
         </div>
